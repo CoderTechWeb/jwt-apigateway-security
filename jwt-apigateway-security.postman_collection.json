@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "83d0f15f-3be4-4511-9aa2-4f461686e712",
+		"name": "jwt-apigateway-security",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15837257"
+	},
+	"item": [
+		{
+			"name": "IdentityService",
+			"item": [
+				{
+					"name": "Create token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pwd",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "suresh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "username",
+								"value": "suresh",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "pwd",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"suresh\",\r\n    \"password\":\"pwd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "username",
+								"value": "suresh",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "pwd",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"john\",\r\n    \"password\":\"pwd\",\r\n    \"email\":\"john@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pwd",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "suresh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "username",
+								"value": "suresh",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "pwd",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"suresh\",\r\n    \"password\":\"pwd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9898/auth/validate?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXJlc2giLCJpYXQiOjE3MTI2MDIzMTMsImV4cCI6MTcxMjYwNDExM30.UZbliIfhaWVAkpXdNrX7kWmbF2Y-tTxpP6hPs3XDbkg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9898",
+							"path": [
+								"auth",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXJlc2giLCJpYXQiOjE3MTI2MDIzMTMsImV4cCI6MTcxMjYwNDExM30.UZbliIfhaWVAkpXdNrX7kWmbF2Y-tTxpP6hPs3XDbkg"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Swiggy App",
+			"item": [
+				{
+					"name": "Swiggy home",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXJlc2giLCJpYXQiOjE3MTI2ODgwMzcsImV4cCI6MTcxMjY4OTgzN30.ThHbMZls7x5D4xt7zv2VwCytyu8WJP7rhc5hMUrrsxM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/swiggy/home",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"swiggy",
+								"home"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by order Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXJlc2giLCJpYXQiOjE3MTI2ODgwMzcsImV4cCI6MTcxMjY4OTgzN30.ThHbMZls7x5D4xt7zv2VwCytyu8WJP7rhc5hMUrrsxM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/swiggy/35fds631",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"swiggy",
+								"35fds631"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Restaurant service",
+			"item": [
+				{
+					"name": "Get status  by order Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXJlc2giLCJpYXQiOjE3MTI2ODgwMzcsImV4cCI6MTcxMjY4OTgzN30.ThHbMZls7x5D4xt7zv2VwCytyu8WJP7rhc5hMUrrsxM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/restaurant/orders/status/35fds631",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurant",
+								"orders",
+								"status",
+								"35fds631"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

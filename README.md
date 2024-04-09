@@ -32,6 +32,9 @@ To set up the microservices architecture locally, follow these steps:
 3. Configure environment variables for each microservice (e.g., database connection strings, API keys).
 4. Test the communication between microservices by sending requests through the Gateway.
 
+## Postman Collection
+For testing the communication between microservices and verifying the authentication process, you can use the provided Postman collection: [jwt-apigateway-security.postman_collection.json](./jwt-apigateway-security.postman_collection.json). This collection contains pre-configured requests to simulate various interactions between the Swiggy app, Gateway, and Identity service.
+
 ## Contributing
 Contributions to improve the architecture, add new features, or fix bugs are welcome! Please follow the contribution guidelines outlined in CONTRIBUTING.md.
 
